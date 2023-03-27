@@ -5,6 +5,7 @@ import java.util.List;
 public class BowlingScoreCalculation {
 
     public Integer calculateScoreWithLaunch(List<Launch> launches){
-        return 0;
+        return launches.stream().map(Launch::getScore)
+                .mapToInt(Integer::valueOf).sum();
     }
 }

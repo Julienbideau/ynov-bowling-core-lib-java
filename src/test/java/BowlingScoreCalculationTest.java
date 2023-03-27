@@ -18,4 +18,11 @@ public class BowlingScoreCalculationTest {
         final Integer score = bowlingScoreCalculation.calculateScoreWithLaunch(launches);
         assertEquals(0, score);
     }
+
+    @Test
+    public void giveTenTimes1ShouldGet10Score(){
+        final List<Launch> launches = IntStream.range(0, 10).mapToObj(x -> new Launch(1)).toList();
+        final Integer score = bowlingScoreCalculation.calculateScoreWithLaunch(launches);
+        assertEquals(10, score);
+    }
 }
