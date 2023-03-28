@@ -52,6 +52,12 @@ public class BowlingScoreCalculationTest {
     }
 
     @Test
+    public void handleInitializationErrorOnLastFrame(){
+        IllegalStateException illegalStateException = assertThrows(IllegalStateException.class, () -> new Frame(1, 1, 10));
+        assertEquals("Can't have a third launch without a spare or strike before", illegalStateException.getMessage());
+    }
+
+    @Test
     public void isStrikeOk(){
         Frame frame = new Frame(10, 0);
         assertTrue(frame.strike());
@@ -94,4 +100,23 @@ public class BowlingScoreCalculationTest {
         Integer score = bowlingScoreCalculation.calculateScoreWithLaunch(List.of(firstFrame, secondFrame, thirdFrame));
         assertEquals(20, score);
     }
+
+    @Test
+    public void calculateScoreSolutionOfCodingTest(){
+        Frame firstFrame = new Frame(10, 0);
+        Frame secondFrame = new Frame(10, 0);
+        Frame thirdFrame = new Frame(7, 3);
+        Frame forthFrame = new Frame(10, 0);
+        Frame fifthFrame = new Frame(10, 0);
+        Frame sixthFrame = new Frame(9, 1);
+        Frame seventhFrame = new Frame(9, 1);
+        Frame eighthFrame = new Frame(6, 3);
+        Frame ninthFrame = new Frame(10, 0);
+        Frame lastFrame=  new Frame(9, 1, 10);
+
+
+        Integer score = bowlingScoreCalculation.calculateScoreWithLaunch(List.of(firstFrame, secondFrame, thirdFrame, forthFrame, fifthFrame, sixthFrame, seventhFrame, eighthFrame, ninthFrame, lastFrame));
+        assertEquals(190, score);
+    }
+
 }
