@@ -33,7 +33,7 @@ public class Frame {
     }
 
     public int getScore() {
-        return firstLaunchScore + secondLaunchScore;
+        return firstLaunchScore + secondLaunchScore + thirdLaunchScore;
     }
 
 

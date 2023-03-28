@@ -112,11 +112,10 @@ public class BowlingScoreCalculationTest {
         Frame seventhFrame = new Frame(9, 1);
         Frame eighthFrame = new Frame(6, 3);
         Frame ninthFrame = new Frame(10, 0);
-        Frame lastFrame=  new Frame(9, 1, 10);
-
+        Frame lastFrame=  new Frame(9, 1, 7);
 
         Integer score = bowlingScoreCalculation.calculateScoreWithLaunch(List.of(firstFrame, secondFrame, thirdFrame, forthFrame, fifthFrame, sixthFrame, seventhFrame, eighthFrame, ninthFrame, lastFrame));
-        assertEquals(190, score);
+        assertEquals(197, score);
     }
 
 }
