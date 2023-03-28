@@ -1,5 +1,5 @@
-import com.ynov.BowlingScoreCalculation;
-import com.ynov.Frame;
+package com.ynov;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -62,5 +62,36 @@ public class BowlingScoreCalculationTest {
     public void isSpare(){
         assertFalse(new Frame(7, 3).strike());
         assertTrue(new Frame(7, 3).spare());
+    }
+
+    @Test
+    public void calculateScoreOfSingleFrameWithStrike(){
+        Integer score = bowlingScoreCalculation.calculateScoreOfSingleFrame(new Frame(10, 0), 10, 10);
+        assertEquals(30, score);
+    }
+
+    @Test
+    public void calculateScoreOfSingleFrameWithSpare() {
+        Integer score = bowlingScoreCalculation.calculateScoreOfSingleFrame(new Frame(8, 2), 10, 10);
+        assertEquals(20, score);
+    }
+
+    @Test
+    public void calculateScoreOfMultipleStrikes(){
+        Frame firstFrame = new Frame(10, 0);
+        Frame secondFrame = new Frame(10, 0);
+        Frame thirdFrame = new Frame(7, 3);
+        Frame forthFrame = new Frame(0, 0);
+        Integer score = bowlingScoreCalculation.calculateScoreWithLaunch(List.of(firstFrame, secondFrame, thirdFrame, forthFrame));
+        assertEquals(57, score);
+    }
+
+    @Test
+    public void calculateScoreOfMultipleSpares(){
+        Frame firstFrame = new Frame(0, 10);
+        Frame secondFrame = new Frame(0, 10);
+        Frame thirdFrame = new Frame(0, 0);
+        Integer score = bowlingScoreCalculation.calculateScoreWithLaunch(List.of(firstFrame, secondFrame, thirdFrame));
+        assertEquals(20, score);
     }
 }
