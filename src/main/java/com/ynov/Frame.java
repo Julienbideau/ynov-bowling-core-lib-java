@@ -19,4 +19,12 @@ public class Frame {
         return firstLaunchScore + secondLaunchScore;
     }
 
+
+    public Boolean strike(){
+        return firstLaunchScore == 10;
+    }
+
+    public Boolean spare(){
+        return firstLaunchScore + secondLaunchScore == 10 && !strike();
+    }
 }

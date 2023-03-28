@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class BowlingScoreCalculationTest {
@@ -50,5 +49,18 @@ public class BowlingScoreCalculationTest {
     public void handleInitializationErrorOnTotalScoreLessThan0(){
         IllegalStateException illegalStateException = assertThrows(IllegalStateException.class, () -> new Frame(-1, -1));
         assertEquals("Can't have a sum of 10+ or -0", illegalStateException.getMessage());
+    }
+
+    @Test
+    public void isStrikeOk(){
+        Frame frame = new Frame(10, 0);
+        assertTrue(frame.strike());
+        assertFalse(frame.spare());
+    }
+
+    @Test
+    public void isSpare(){
+        assertFalse(new Frame(7, 3).strike());
+        assertTrue(new Frame(7, 3).spare());
     }
 }
