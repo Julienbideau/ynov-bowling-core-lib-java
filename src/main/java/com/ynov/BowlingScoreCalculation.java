@@ -4,8 +4,8 @@ import java.util.List;
 
 public class BowlingScoreCalculation {
 
-    public Integer calculateScoreWithLaunch(List<Launch> launches){
-        return launches.stream().map(Launch::getScore)
+    public Integer calculateScoreWithLaunch(List<Frame> frames){
+        return frames.stream().map(Frame::getScore)
                 .mapToInt(Integer::valueOf).sum();
     }
 }
